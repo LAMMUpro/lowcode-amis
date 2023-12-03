@@ -63,3 +63,92 @@ model Role {
   /// 是否被删除
   isDeleted Boolean @default(false)
 }
+
+/// 应用
+model Application {
+  id                 Int     @id @default(autoincrement()) @db.UnsignedInt
+  /// 应用名 
+  name               String  @unique @db.VarChar(20)
+  /// 应用描述 
+  describe           String  @map("_describe") @db.VarChar(100)
+  /// 当前编辑版本 
+  currentEditVersion String  @default("1.0.0") @db.VarChar(8)
+  /// 是否被删除 
+  isDeleted          Boolean @default(false)
+}
+
+/// 应用版本
+model AppVersion {
+  id            Int     @id @default(autoincrement()) @db.UnsignedInt
+  /// 对应应用id
+  applicationId Int     @db.UnsignedInt
+  /// 版本号
+  version       String  @default("1.0.0") @db.VarChar(8)
+  /// 是否正在审核中
+  isAuditing    Boolean @default(false)
+  /// 是否已审核通过，false并不代表未通过，有可能是没提交过
+  isPass        Boolean @default(false)
+  /// 审核意见，不为空字符串代表未通过
+  auditContent  String  @default("") @db.VarChar(100)
+  /// 是否被删除
+  isDeleted     Boolean @default(false)
+
+  @@unique([applicationId, version], name: "applicationId_version")
+}
+
+/// 应用环境
+model AppEnv {
+  id            Int     @id @default(autoincrement()) @db.UnsignedInt
+  /// 对应应用id
+  applicationId Int     @db.UnsignedInt
+  /// 环境（默认有test/pre/master）
+  env           String  @db.VarChar(10)
+  /// 环境名
+  envCh         String  @db.VarChar(10)
+  /// 是否可删除（test/pre/master不可删除）
+  canDelete     Boolean @default(true)
+  /// 版本号id, 为0则为无绑定
+  appVersionId  Int     @default(0) @db.UnsignedInt
+  /// 版本号
+  version       String  @default("1.0.0") @db.VarChar(8)
+  /// 是否被删除
+  isDeleted     Boolean @default(false)
+
+  @@unique([applicationId, env, envCh], name: "applicationId_env_envCh")
+}
+
+/// 菜单节点
+model PageNode {
+  id            Int     @id @default(autoincrement()) @db.UnsignedInt
+  /// 菜单节点英文名, 必须英文
+  name          String  @db.VarChar(30)
+  /// 菜单节点中文名
+  nameCh        String  @db.VarChar(15)
+  /// 描述
+  describe      String  @map("_describe") @db.VarChar(100)
+  /// 父菜单节点, 为0代表根菜单节点
+  parentId      Int     @default(0) @db.UnsignedInt
+  /// 对应应用id
+  applicationId Int     @db.UnsignedInt
+  /// 版本号xx.xx.xx
+  version       String  @db.VarChar(8)
+  /// 菜单节点图标
+  icon          String  @default("")
+  /// 菜单节点是否承载页面
+  hasSchema     Boolean @default(false)
+  /// 是否被删除
+  isDeleted     Boolean @default(false)
+
+  @@unique([name, parentId, applicationId, version], name: "name_parentId_applicationId_version")
+}
+
+/// 页面schema
+model PageSchema {
+  id        Int     @id @default(autoincrement()) @db.UnsignedInt
+  /// 低代码页面schema
+  schema    String  @db.LongText
+  /// 菜单节点id
+  nodeId    Int     @db.UnsignedInt
+  /// 是否被删除
+  isDeleted Boolean @default(false)
+}

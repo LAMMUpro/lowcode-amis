@@ -17,9 +17,12 @@ async function bootstrap() {
   SwaggerModule.setup('swagger', app, document);
   /** 允许跨域 */
   app.enableCors({
-    /** 不配origin, credentials低代码数据源请求报错!! */
-    origin: "*",
-    credentials: true,
+    origin: [
+      "http://localhost:8020",
+      "https://amiseditor.test.lammu.cn"
+    ],
+    /** 这个参数有什么用途 */
+    // credentials: true,
   });
   /** 请求大小限制更改到 */
   app.use(json({limit: '2mb'}));

@@ -3,9 +3,10 @@ import { DemoService } from './demo.service';
 import { FileFieldsInterceptor, FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { ConfigService, ConfigType } from '@nestjs/config';
 import databaseConfig from 'src/config/database.config';
-import { ApiOperation } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { getDefaultResponse } from 'src/utils/default';
 
+@ApiTags("示例demo")
 @Controller('/test')
 export class DemoController {
   constructor(

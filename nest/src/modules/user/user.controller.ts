@@ -4,7 +4,9 @@ import { Controller, Body, Param, Delete, Get, Post, Put, Query } from '@nestjs/
 import { getDefaultResponse } from 'src/utils/default';
 import { UserDtoCreate, UserDtoUpdate } from 'src/types/dto/User';
 import { filterUndefined } from 'src/utils';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags("用户")
 @Controller('user')
 export class UserController {
   constructor(private readonly mysql: PrismaService) {}
