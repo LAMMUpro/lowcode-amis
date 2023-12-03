@@ -33,10 +33,10 @@
     "push": "yarn prisma db push",
     "watch": "ts-node scripts/watchPrismaSchema.ts",
 
-    "generate:dto": "ts-node prisma/generateDto.ts",
+    "generate:dto": "ts-node scripts/generateDto.ts",
     "generate:module": "./scripts/generate_module.sh",
-    "generate:controller": "ts-node prisma/generateController.ts",
-    "generate:api": "ts-node prisma/generateApi.ts",
+    "generate:controller": "ts-node scripts/generateController.ts",
+    "generate:api": "ts-node scripts/generateApi.ts",
 
     "deploy:test": "export DEPLOY_TIME=$(date +'%Y%m%d%H%M%S') && s deploy -t s.test.yaml",
     "deploy:dev": "export DEPLOY_TIME=$(date +'%Y%m%d%H%M%S') && s deploy -t s.dev.yaml",
