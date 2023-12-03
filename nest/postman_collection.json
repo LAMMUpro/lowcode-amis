@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "f603deed-860a-47e5-9787-01c33a2df19d",
+		"name": "LowCodeNest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24310633"
+	},
+	"item": [
+		{
+			"name": "测试接口",
+			"item": [
+				{
+					"name": "HelloWorld",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/test",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "上传多文件",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Administrator/Pictures/enabling-institutions-4.png"
+								},
+								{
+									"key": "otherKey",
+									"value": "nnnm",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base}}/test/upload-file",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"test",
+								"upload-file"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "上传单文件",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Administrator/Pictures/enabling-institutions-4.png"
+								},
+								{
+									"key": "otherKey",
+									"value": "nnnm",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base}}/test/upload-file",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"test",
+								"upload-file"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取配置",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "页面存储",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/lowcode-page",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"lowcode-page"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "测试数据库",
+			"item": [
+				{
+					"name": "获取post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/post/1231",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"post",
+								"1231"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"t1\",\r\n    \"content\": \"c1\",\r\n    \"authorEmail\": \"a1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/post",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "创建用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"lammu\",\r\n    \"email\": \"email\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/user",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除用户",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/user/2",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"user",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

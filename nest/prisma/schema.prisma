@@ -1,0 +1,65 @@
+// This is your Prisma schema file, learn more about it in the docs: https://pris.ly/d/prisma-schema
+// 使用///会生成对应的ts注释!!!
+// LongText没法加@default
+
+// 连接数据库配置
+generator client {
+  provider      = "prisma-client-js"
+  // serveless(部署)需要这个engines, 函数计算用的是1.0.x
+  binaryTargets = "debian-openssl-1.1.x" // "debian-openssl-1.0.x" | "debian-openssl-1.1.x"
+  // macbook(本地开发)需要这个engines
+  // binaryTargets = "darwin-arm64"
+  // windows(本地开发)需要这个engines
+  // binaryTargets = "windows"
+}
+
+// 预览先要登录 dbdocs login
+// 更新项目命令 dbdocs build prisma/schema.dbml
+// 预览网址 https://dbdocs.io/chen_yongchao/lowcode-nest
+generator dbml {
+  provider   = "prisma-dbml-generator"
+  output     = "./"
+  outputName = "schema.dbml"
+}
+
+// 数据库参数
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// 用户
+model User {
+  id        Int     @id @default(autoincrement()) @db.UnsignedInt
+  /// 真实姓名
+  realName  String  @db.VarChar(10)
+  /// 昵称
+  nickName  String  @db.VarChar(20)
+  /// 头像url
+  avatar    String  @db.VarChar(100)
+  /// 密码凭证
+  psw       String  @db.VarChar(30)
+  /// 手机号/账号
+  phone     String  @db.VarChar(11)
+  /// 性别 0-女, 1-男, 2-未知
+  sex       Int     @default(2) @db.TinyInt
+  /// 所属角色, 逗号分隔
+  roleIds   String  @default("") @db.VarChar(200)
+  /// 是否启用
+  isEnable  Boolean @default(true)
+  /// 是否被删除
+  isDeleted Boolean @default(false)
+}
+
+/// 角色
+model Role {
+  id        Int     @id @default(autoincrement()) @db.UnsignedInt
+  /// 角色名称
+  name      String  @db.VarChar(20)
+  /// 角色描述
+  describe  String  @map("_describe") @db.VarChar(100)
+  /// 菜单id, 逗号分隔
+  menuIds   String  @default("") @db.VarChar(500)
+  /// 是否被删除
+  isDeleted Boolean @default(false)
+}
