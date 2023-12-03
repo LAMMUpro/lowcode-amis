@@ -1,0 +1,17 @@
+{
+  "name": "lowcode-amis",
+  "version": "1.0.0",
+  "description": "amis低代码工程根路径",
+  "main": "",
+  "author": "Lammu",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "admin",
+      "nest",
+      "editor"
+    ]
+  }
+}
