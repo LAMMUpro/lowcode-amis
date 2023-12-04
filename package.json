@@ -12,6 +12,9 @@
       "admin",
       "nest",
       "editor"
+    ],
+    "nohoist": [
+
     ]
   }
 }
