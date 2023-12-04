@@ -31,7 +31,7 @@ generator dbml {
 // https://github.com/CarterGrimmeisen/zod-prisma
 generator zod {
   provider                 = "zod-prisma"
-  output                   = "../src/zod" // (default) the directory where generated zod schemas will be saved
+  output                   = "../src/types/zod" // (default) the directory where generated zod schemas will be saved
   relationModel            = true // (default) Create and export both plain and related models.
   modelCase                = "PascalCase" // (default) Output models using pascal case (ex. UserModel, PostModel)
   // modelCase             = "camelCase" // Output models using camel case (ex. userModel, postModel)
@@ -43,7 +43,6 @@ generator zod {
   prismaJsonNullability    = true // (default) uses prisma's scheme for JSON field nullability
   // prismaJsonNullability = false // allows null assignment to optional JSON fields
 }
-
 
 /// 用户
 model User {
