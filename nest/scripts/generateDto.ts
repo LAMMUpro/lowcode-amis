@@ -1,9 +1,10 @@
 import { Prisma} from "@prisma/client";
 import * as fs from 'fs';
+import * as path from 'path';
 import { generateApiProperty } from "../src/utils";
 
 /** dto文件夹路径 */
-const __dir = `${__dirname}/dto`;
+const __dir = path.resolve(__dirname, `../src/types/dto`);
 /** 如果存在, 删除prisma/dto文件夹 */
 if (fs.existsSync(__dir)) {
   fs.rmSync(__dir, { recursive: true });
