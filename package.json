@@ -14,7 +14,8 @@
       "editor"
     ],
     "nohoist": [
-
+      "@lammu/editor/@types/react",
+      "@lammu/editor/@types/node"
     ]
   }
 }
