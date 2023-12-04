@@ -22,8 +22,7 @@
   "exclude": [
     "dist",
     "node_modules",
-    "prisma/dto",
-    "prisma/api",
-    "prisma/controller"
+    "script/api",
+    "script/controller"
   ]
 }
