@@ -13,6 +13,12 @@ generator client {
   // binaryTargets = "windows"
 }
 
+// 数据库参数
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
 // 预览先要登录 dbdocs login
 // 更新项目命令 dbdocs build prisma/schema.dbml
 // 预览网址 https://dbdocs.io/chen_yongchao/lowcode-nest
@@ -22,11 +28,22 @@ generator dbml {
   outputName = "schema.dbml"
 }
 
-// 数据库参数
-datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+// https://github.com/CarterGrimmeisen/zod-prisma
+generator zod {
+  provider                 = "zod-prisma"
+  output                   = "../src/zod" // (default) the directory where generated zod schemas will be saved
+  relationModel            = true // (default) Create and export both plain and related models.
+  modelCase                = "PascalCase" // (default) Output models using pascal case (ex. UserModel, PostModel)
+  // modelCase             = "camelCase" // Output models using camel case (ex. userModel, postModel)
+  modelSuffix              = "Zod" // (default) Suffix to apply to your prisma models when naming Zod schemas
+  // useDecimalJs          = false // (default) represent the prisma Decimal type using as a JS number
+  useDecimalJs             = true // represent the prisma Decimal type using Decimal.js (as Prisma does)
+  // imports                  = null // (default) will import the referenced file in generated schemas to be used via imports.someExportedVariable
+  // https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-by-null-values
+  prismaJsonNullability    = true // (default) uses prisma's scheme for JSON field nullability
+  // prismaJsonNullability = false // allows null assignment to optional JSON fields
 }
+
 
 /// 用户
 model User {
