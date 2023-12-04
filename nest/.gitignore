@@ -12,8 +12,10 @@ prisma/api
 prisma/schema.dbml
 # 自动生成的数据库变更记录
 prisma/migrations
-# 软链接文件夹！！！
+# 自动生成的dto
 src/types/dto
+# 自动生成的zod
+src/types/zod
 # 隐私配置
 .env
 .env.*
