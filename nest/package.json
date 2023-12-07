@@ -59,6 +59,7 @@
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
+    "js-yaml": "^4.1.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
     "@types/ali-oss": "^6.16.8",

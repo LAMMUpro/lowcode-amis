@@ -4,6 +4,8 @@ build
 build_webpack
 dist
 node_modules
+# 自动生成的swagger
+swagger.yaml
 # 自动生成的代码
 prisma/controller 
 # 自动生成的代码
