@@ -137,8 +137,9 @@ yarn start:dev # 启动时如果连接不上数据库, 会启动失败!
 后端接口: http://localhost:9000/
 数据库dbml预览: https://dbdocs.io/chen_yongchao/lowcode-nest
 数据库web: http://localhost:7777/
-swagger文档: http://localhost:9000/swagger/
+swagger文档(只在开发环境存在): http://localhost:9000/swagger/
 swagger-json导出: http://localhost:9000/swagger-json/
+swagger-yaml导出: http://localhost:9000/swagger-yaml/
 
 ## 部署
 > 多环境配置问题：数据库配置、s.yaml函数名、
