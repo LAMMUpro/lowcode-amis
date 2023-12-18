@@ -10,8 +10,7 @@
     "packages": [
       "packages/*",
       "admin",
-      "nest",
-      "editor"
+      "nest"
     ],
     "nohoist": [
       "@lammu/editor/@types/react",
