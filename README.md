@@ -7,7 +7,7 @@ admin - 成品后台
 nest - 后端
 
 ## editor编辑器
-> 编辑器不要设置在workspace里，启动会报错
+> 编辑器不要设置在workspace里(不能使用node16.18.0版本)，启动会报错
 
 ## admin渲染器
 
