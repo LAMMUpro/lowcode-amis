@@ -1,5 +1,5 @@
 import { applyDecorators } from "@nestjs/common";
-import { ApiProperty, ApiResponse, getSchemaPath } from "@nestjs/swagger";
+import { ApiExtraModels, ApiProperty, ApiResponse, getSchemaPath } from "@nestjs/swagger";
 
 /** 响应对象基本格式 */
 export class JsonResponse<T> {
@@ -30,6 +30,8 @@ export function ApiJsonResponse<T extends Function>(
   model: T,
 ) {
   return applyDecorators(
+    /** 注入模型 */
+    ApiExtraModels(model),
     ApiResponse({
       schema: {
         allOf: [
@@ -52,6 +54,8 @@ export function ApiListResponse<T extends Function>(
   model: T,
 ) {
   return applyDecorators(
+    /** 注入模型 */
+    ApiExtraModels(model),
     ApiResponse({
       schema: {
         allOf: [
@@ -77,6 +81,8 @@ export function ApiPaginationResponse<T extends Function>(
   model: T,
 ) {
   return applyDecorators(
+    /** 注入模型 */
+    ApiExtraModels(model),
     ApiResponse({
       schema: {
         allOf: [
