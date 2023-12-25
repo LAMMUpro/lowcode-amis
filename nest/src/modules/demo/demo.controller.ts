@@ -3,9 +3,12 @@ import { DemoService } from './demo.service';
 import { FileFieldsInterceptor, FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { ConfigService, ConfigType } from '@nestjs/config';
 import databaseConfig from 'src/config/database.config';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiExtraModels, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { getDefaultResponse } from 'src/utils/default';
+import { JsonResponse, Pagination } from 'src/decorators/swagger';
 
+@ApiExtraModels(JsonResponse) // 基础模型
+@ApiExtraModels(Pagination) // 基础模型
 @ApiTags("示例demo")
 @Controller('/test')
 export class DemoController {
